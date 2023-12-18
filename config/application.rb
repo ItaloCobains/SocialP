@@ -12,6 +12,7 @@ module RubyRailsPostgres
     config.load_defaults 7.0
 
     config.hosts << 'rails-production-60de.up.railway.app'
+    config.hosts << "crispy-space-computing-machine-jg679rrjwvgh5g4-3000.app.github.dev"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
