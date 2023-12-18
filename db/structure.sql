@@ -1,3 +1,5 @@
+CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
+
 -- Tabela de usuários
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
