@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  url: <%= ENV["DATABASE_URL"] %>
+  url: "postgresql://postgres:ECE34Ge6F1524G1GF6gbBA6eec-6*46E@monorail.proxy.rlwy.net:56582/railway" 
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
