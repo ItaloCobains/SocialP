@@ -1,8 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :show, :destroy]
 
-  def show
-  
+  def show    
   end
 
   def index
@@ -19,12 +18,12 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article was created successfully"
       redirect_to @article
     else
-      render 'new'
+      render :new, status: :unprocessable_entity
     end
   end
+  
 
   def edit
-
   end
 
 
@@ -34,20 +33,23 @@ class ArticlesController < ApplicationController
       flash[:notice] = "Article was updated successfully"
       redirect_to @article
     else
-      render 'edit'
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy 
-
+    
     @article.destroy
-    redirect_to articles_path
+    redirect_to articles_path, status: :see_other
   end
 
   private
 
   def set_article
-
+    @article = Article.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    # flash[:error] = "Article not found"
+    redirect_to articles_path
   end
 
   def article_params
