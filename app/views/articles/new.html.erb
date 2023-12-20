@@ -1,5 +1,14 @@
 <h1>Create a new article</h1>
 
+<%= if @article.errors.any? %>
+  <h2>the following errors prevented the article from beign saved</h2>
+  <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+      <%= msg %>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with scope: :article, url: articles_path, local: true do |f| %>
 
   <p>
