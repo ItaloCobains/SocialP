@@ -1,7 +1,8 @@
 class ArticlesController < ApplicationController
+  http_basic_authenticate_with name: 'italo', password: 'italo', except: [:index, :show]
   before_action :set_article, only: [:edit, :update, :show, :destroy]
 
-  def show    
+  def show
   end
 
   def index
@@ -53,6 +54,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, :status)
   end
 end

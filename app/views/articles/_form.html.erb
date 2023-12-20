@@ -20,6 +20,11 @@
     <%= f.text_area :description %>
   </p>
 
+  <div>
+    <%= f.label :status %>
+    <%= f.select :status, Visible::VALID_STATUSES, selected: @article.status || 'public' %>
+  </div>
+
   <p>
     <%= f.submit %>
   </p>

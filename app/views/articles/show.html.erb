@@ -9,3 +9,10 @@
                     turbo_confirm: "Are you sure?"
                   } %> |
 <%= link_to 'Back', articles_path %>
+
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h2> Add comments </h2>
+<%= render 'comments/form' %>
