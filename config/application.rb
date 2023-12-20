@@ -11,6 +11,7 @@ module RubyRailsPostgres
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.assets.initialize_on_precompile = false
     config.hosts << 'rails-production-60de.up.railway.app'
     config.hosts << "crispy-space-computing-machine-jg679rrjwvgh5g4-3000.app.github.dev"
     # Configuration for the application, engines, and railties goes here.
