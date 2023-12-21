@@ -1,11 +1,21 @@
-version: '3.8'
+version: '3'
 services:
   db:
-    image: postgres:latest
+    image: postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DATABASE: myapp_development
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - ./tmp/db:/var/lib/postgresql/data
   redis:
-    image: redis:latest
+    image: redis
+  web:
+    build: .
+    command: bash -c "entrypoint.sh && rails db:migrate && bin/dev"
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
