@@ -6,6 +6,10 @@ ruby '3.1.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3', '>= 7.0.3.1'
 
+gem 'sidekiq'
+
+gem 'foreman'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -74,6 +78,6 @@ end
 
 gem 'devise', '~> 4.9'
 
-gem "tailwindcss-rails", "~> 2.1"
+gem 'tailwindcss-rails', '~> 2.1'
 
-gem "omniauth-github", "~> 2.0"
+gem 'omniauth-github', '~> 2.0'
