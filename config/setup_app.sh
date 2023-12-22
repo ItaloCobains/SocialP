@@ -11,7 +11,8 @@ fi
 if [ "$RAILS_ENV" = "development" ]; then
   bundle exec foreman start -f Procfile.dev "$@"
 else
-  bundle exec foreman start -f Procfile "$@"
+  # bundle exec foreman start -f Procfile "$@"
+  echo "Initialize"
 fi
 
 exec "$@" # command from docker-compose.yml
