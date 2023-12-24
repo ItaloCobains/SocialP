@@ -15,11 +15,6 @@ module RubyRailsPostgres
     config.hosts << 'rails-production-60de.up.railway.app'
     config.hosts << "crispy-space-computing-machine-jg679rrjwvgh5g4-3000.app.github.dev"
 
-    # docker
-
-    config.log_level = ENV.fetch('LOG_LEVEL', :debug)
-    config.log_tags = [:subdomain, :uuid]
-    config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
