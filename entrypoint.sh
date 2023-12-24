@@ -18,5 +18,8 @@ rm -f /myapp/tmp/pids/server.pid
 # Wait for the database
 wait_for_db
 
+bin/rails db:create
+bin/rails db:migrate
+
 # Then exec the container's main process (what's set as CMD in the Dockerfile).
 exec "$@"
