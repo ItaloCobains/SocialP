@@ -36,8 +36,10 @@ services:
       - .:/home/app/web
     ports:
       - '3000:3000'
+      - '12345:12345'
     expose:
       - 3000
+      - 12345
 
   worker:
     build:

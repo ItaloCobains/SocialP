@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
+
 
   def edit
   end
@@ -38,8 +38,8 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def destroy 
-    
+  def destroy
+
     @article.destroy
     redirect_to articles_path, status: :see_other
   end
