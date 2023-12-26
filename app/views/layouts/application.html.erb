@@ -6,34 +6,47 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'menu' %>
   </head>
 
   <body>
-    <%= render 'layouts/messages'%>
-    <%= yield %>
+    <header class="bg-gray-800 text-white p-4 flex items-center justify-between">
+      <div class="text-lg font-bold">
+        ItaloCobains Blog
+      </div>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="brand" href="/">The Idea app</a>
-          <ul class="nav">
-            <li class="active"><a href="/ideas">Ideas</a></li>
-          </ul>
-          <p class="navbar-text pull-right">
-            <% if user_signed_in? %>
-              Logged in as <strong><%= current_user.email %>, name: <%= current_user.name %></strong>.
-              <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-             <%= link_to "Logout", destroy_user_session_path(@current_user), data: { turbo: true, turbo_method: :delete } %>
-            <% else %>
-              <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-              <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-            <% end %>
-          </p>
+      <!-- Menu responsivo -->
+      <div class="flex items-center">
+        <div class="sm:hidden">
+          <button data-action="click->menu#toggleMenu" class="text-white">
+            <!-- Ícone de três tracinhos -->
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Links no menu responsivo -->
+        <div id="menu" class="hidden sm:flex items-center ml-4">
+          <% if user_signed_in? %>
+            <!-- Se o usuário estiver logado -->
+            <div class="mr-4">
+              Logado como <strong><%= current_user.name %></strong>.
+            </div>
+            <%= link_to 'Editar perfil', edit_user_registration_path, class: 'text-white mr-4' %>
+            <%= link_to 'Sair', destroy_user_session_path(@current_user), class: 'text-white' %>
+          <% else %>
+            <!-- Se o usuário não estiver logado -->
+            <%= link_to 'Registrar', new_user_registration_path, class: 'text-white mr-4' %>
+            <%= link_to 'Entrar', new_user_session_path, class: 'text-white' %>
+          <% end %>
         </div>
       </div>
-    </div>
+    </header>
+
+    <%= render 'layouts/messages' %>
+    <%= yield %>
   </body>
 </html>
