@@ -7,7 +7,8 @@
   <p class="my-5">
     <strong class="block font-medium mb-1">Vote:</strong>
     <%= project.vote %>
-  </p>
+    <%= button_to "delete", project, method: :delete, form: { data: { turbo_confirm: "Are you sure?"}}, class: "bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full" %>
+    </p>
 
   <% if action_name != "show" %>
     <%= link_to "Show this project", project, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
