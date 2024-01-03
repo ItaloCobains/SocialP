@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TryTech</title>
+    <title>TryTech - Dashboard</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,8 +14,9 @@
 
   <body class="bg-gray-200">
     <%= render partial: "shared/notifications", locals: { message: flash[:notice] } %>
+    <%= render partial: "dashboard/shared/header", locals: {user: @user} %>
+    <%= render "dashboard/shared/sidebar" %>
     <%= yield %>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.js" integrity="sha512-BJ/5sR2hFxQTKin/55JQCcMTObShDBAmVjL/3NR/MVcrhyOazJjAgvROem03+HYyGw16SVdSfoWCFGr9syxAKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </body>
 </html>
