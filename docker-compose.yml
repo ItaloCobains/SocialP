@@ -9,6 +9,7 @@ services:
       - '6379'
     environment:
       TERM: xterm-256color
+
   db:
     image: postgres:14
     environment:
@@ -21,6 +22,19 @@ services:
       - '5432:5432'
     expose:
       - '5432'
+
+  db_test:
+    image: postgres:14
+    environment:
+      TZ: America/Sao_Paulo
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: _test
+      TERM: xterm-256color
+    ports:
+      - '5433:5432'
+    expose:
+      - '5433'
 
   web:
     build: .
@@ -51,3 +65,4 @@ services:
       - './.env.development'
     volumes:
       - .:/home/app/web
+
